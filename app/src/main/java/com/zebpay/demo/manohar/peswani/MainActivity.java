@@ -20,7 +20,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zebpay.demo.manohar.peswani.database.MarketService;
 import com.zebpay.demo.manohar.peswani.database.entity.MarketInfo;
 import com.zebpay.demo.manohar.peswani.database.entity.ZebPayFeed;
 import com.zebpay.demo.manohar.peswani.presenter.ZebPayPresenter;
@@ -149,6 +148,9 @@ public class MainActivity extends AppCompatActivity implements FeedsView {
             case R.id.refresh:
                 mPresenter.getMarketInfo();
                 Toast.makeText(this, "Refreshing...", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.set_divation:
+                UserPreference.showChangeLangDialog(this, market.getText().toString());
                 break;
         }
         return super.onOptionsItemSelected(item);

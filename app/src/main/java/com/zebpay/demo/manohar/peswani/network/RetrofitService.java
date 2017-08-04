@@ -15,7 +15,7 @@ public class RetrofitService {
     private static Retrofit retrofit;
 
     public static final String URL_MARKET = "https://api.zebpay.com/api/v1/ticker?currencyCode=INR";
-    private static final String BASE_URL_FEEDS = "https://www.zebpay.com/api/v1/";
+    private static final String BASE_URL_FEEDS = "https://www.zebapi.com/api/v1/";
 
     private RetrofitService() {
 
@@ -28,7 +28,7 @@ public class RetrofitService {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
             httpClient.addInterceptor(logging);
             retrofit = new Retrofit.Builder()
-                    .baseUrl("https://www.zebapi.com/api/v1/")
+                    .baseUrl(BASE_URL_FEEDS)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(httpClient.build())

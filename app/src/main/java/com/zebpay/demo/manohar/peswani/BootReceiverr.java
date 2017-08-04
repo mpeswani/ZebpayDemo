@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 
-import com.zebpay.demo.manohar.peswani.database.MarketService;
-
 import static android.content.Context.ALARM_SERVICE;
 
 /**
