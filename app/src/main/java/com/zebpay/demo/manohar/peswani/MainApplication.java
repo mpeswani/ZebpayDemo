@@ -4,7 +4,6 @@ import android.app.Application;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import com.facebook.stetho.Stetho;
 import com.zebpay.demo.manohar.peswani.database.AppDatabase;
 
 /**
@@ -27,6 +26,5 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
         getDatabase(this);
-        Stetho.initializeWithDefaults(this);
     }
 }

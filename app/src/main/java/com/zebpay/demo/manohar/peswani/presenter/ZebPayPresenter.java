@@ -67,7 +67,8 @@ public class ZebPayPresenter extends BasePresenterImpl implements BasePresenter 
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        Log.v("error", e.getMessage());
+                        view.noMarketValue();
+
                     }
                 }));
     }

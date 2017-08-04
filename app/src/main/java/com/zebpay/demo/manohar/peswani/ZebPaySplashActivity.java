@@ -11,10 +11,9 @@ public class ZebPaySplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        new Handler().postDelayed(() ->
-                startActivity(new Intent(ZebPaySplashActivity.this, MainActivity.class)), 3000);
-        if (getActionBar() != null) {
-            getActionBar().hide();
-        }
+        new Handler().postDelayed(() -> {
+            startActivity(new Intent(ZebPaySplashActivity.this, MainActivity.class));
+            finish();
+        }, 3000);
     }
 }

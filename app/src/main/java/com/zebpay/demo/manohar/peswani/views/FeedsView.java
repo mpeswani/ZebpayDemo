@@ -18,4 +18,6 @@ public interface FeedsView {
     void wait(boolean wait);
 
     void showMarketValue(MarketInfo marketInfo);
+
+    void noMarketValue();
 }

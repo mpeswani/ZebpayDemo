@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements FeedsView {
     private TextView sell;
     private TextView market;
     private TextView volume;
+    private View headerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,14 @@ public class MainActivity extends AppCompatActivity implements FeedsView {
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mAdapter.setEmptyView(R.layout.empty_view);
+        mAdapter.getEmptyView().setOnClickListener(view -> {
+            if(ZebUtil.isOnline(this)) {
+                mPresenter.getFeeds(ZebUtil.isOnline(this));
+                mPresenter.getMarketInfo();
+            }else {
+                Toast.makeText(this, "No Internet.", Toast.LENGTH_SHORT).show();
+            }
+        });
         mRecyclerView.setAdapter(mAdapter);
         mPresenter.getFeeds(ZebUtil.isOnline(this));
         mPresenter.getMarketInfo();
@@ -95,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements FeedsView {
     }
 
     private void setHeaderView() {
-        View headerView = LayoutInflater.from(this).inflate(R.layout.header_view, null, false);
+        headerView = LayoutInflater.from(this).inflate(R.layout.header_view, null, false);
         buy = headerView.findViewById(R.id.buy);
         sell = headerView.findViewById(R.id.sell);
         market = headerView.findViewById(R.id.market);
@@ -123,10 +132,16 @@ public class MainActivity extends AppCompatActivity implements FeedsView {
 
     @Override
     public void showMarketValue(MarketInfo marketInfo) {
+        headerView.setVisibility(View.VISIBLE);
         buy.setText("buy 1B =" + marketInfo.getBuy() + " INR");
         sell.setText("sell 1B =" + marketInfo.getSell() + " INR");
         market.setText(marketInfo.getMarket() + " INR");
         volume.setText(marketInfo.getVolume() + " B");
+    }
+
+    @Override
+    public void noMarketValue() {
+        headerView.setVisibility(View.GONE);
     }
 
     @Override

@@ -86,6 +86,11 @@ public class MarketService extends IntentService implements FeedsView {
         }
     }
 
+    @Override
+    public void noMarketValue() {
+
+    }
+
     private void showNotification(String change) {
         Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder mBuilder =
