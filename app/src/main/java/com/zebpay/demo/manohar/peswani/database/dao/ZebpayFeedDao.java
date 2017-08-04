@@ -24,5 +24,5 @@ public interface ZebpayFeedDao {
     List<Long> insertAll(ZebPayFeed... zebPayFeeds);
 
     @Delete
-    int delete(ZebPayFeed... students);
+    int delete(ZebPayFeed... zebPayFeeds);
 }

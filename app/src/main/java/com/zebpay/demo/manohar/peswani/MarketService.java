@@ -42,7 +42,7 @@ public class MarketService extends IntentService implements FeedsView {
     }
 
     @Override
-    public void displayFeeds(List<ZebPayFeed> studentList) {
+    public void displayFeeds(List<ZebPayFeed> zebPayFeeds) {
 
     }
 

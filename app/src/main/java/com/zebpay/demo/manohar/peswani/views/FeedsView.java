@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface FeedsView {
 
-    void displayFeeds(List<ZebPayFeed> studentList);
+    void displayFeeds(List<ZebPayFeed> zebPayFeeds);
 
     void handleEmptyList();
 
