@@ -71,7 +71,7 @@ public class MarketService extends IntentService implements FeedsView {
             if (isPercent) {
                 double percentChange = ((savedValue - currentValue) / savedValue) * 100;
                 if (Math.abs(percentChange) >= Math.abs(variable)) {
-                    showNotification(percentChange + "");
+                    showNotification(percentChange + "%");
                     preferences.edit().putString(UserPreference.SAVED_VALUE,
                             marketInfo.getMarket()).apply();
                 }
