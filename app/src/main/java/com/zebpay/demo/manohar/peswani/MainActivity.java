@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.zebpay.demo.manohar.peswani.database.entity.MarketInfo;
 import com.zebpay.demo.manohar.peswani.database.entity.ZebPayFeed;
 import com.zebpay.demo.manohar.peswani.presenter.ZebPayPresenter;
@@ -31,6 +32,8 @@ import com.zebpay.demo.manohar.peswani.views.FeedsView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements FeedsView {
 
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements FeedsView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         mPresenter = new ZebPayPresenter(this, new FeedsDatabaseRepository(this),
                 new FeedsNetworkRepository(this));
