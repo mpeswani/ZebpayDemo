@@ -2,6 +2,7 @@ package com.zebpay.demo.manohar.peswani.ui.adapter;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
@@ -28,8 +29,14 @@ public class HomeScreenAdapter extends BaseQuickAdapter<ZebPayFeed, BaseViewHold
 
     @Override
     protected void convert(BaseViewHolder helper, ZebPayFeed item) {
+        TextDrawable drawable;
+        if (TextUtils.isEmpty(item.getName())) {
+            drawable = getDrawable("U");
+        } else {
+            drawable = getDrawable(item.getName().substring(0, 1));
+        }
         Glide.with(mContext).load(item.getSourceImageUrl()).
-                error(getDrawable(item.getName().substring(0, 1))).
+                error(drawable).
                 crossFade().transform(new CircleTransform(mContext)).
                 into((ImageView) helper.getView(R.id.image));
         helper.setText(R.id.name, item.getTitle());
